@@ -1,5 +1,59 @@
 $(window).on("load", function() {
-//$( document ).ready(function() {
+
+    var app = new Vue({
+        el: '#playerList',
+        data: {
+            players: [
+                {
+                    "id": 1,
+                    "name": "Jakob",
+                    "elo": 10
+                },
+                {
+                    "id": 2,
+                    "name": "Zach",
+                    "elo": 10
+                },
+                {
+                    "id": 3,
+                    "name": "Brennan",
+                    "elo": 10
+                }
+            ]
+        },
+        computed: {
+            "numPlayers": function() {
+                if (app === undefined){
+                    return 0;
+                } else {
+                    var len = app.players.length
+                    return len;
+                }
+            }
+        },
+        methods: {
+            "changePlayerName": function(id) {
+                var guy = app.players.filter(d => d.id === id)[0]
+                guy.name = $("#"+id).val()
+                console.log(guy)
+                console.log(app.players)
+            },
+            "addPlayer": function() {
+
+                var template = {
+                    "id": 4,
+                    "name": "Enter a name...",
+                    "elo": 0
+                }
+
+                app.players.push(template);
+
+                console.log("player added")
+            }
+        }
+
+    })
+
 
     setInterval(function(){ 
         $('.pre-loader').addClass('exit');
@@ -7,57 +61,6 @@ $(window).on("load", function() {
     
 
 
-	// // Entrance Anims 
-	// $('#login-container').addClass('entrance-anim ');
-
-    // $('#about-link').hover(
-    //     function() {
-    //     	$("#about-box").toggleClass("filled");
-    //     }
-    // );
-
-    // $('#contact-link').hover(
-    //     function() {
-    //         $("#contact-box").toggleClass("filled");
-    //     }
-    // );
-
-    // $('#card-1 a.missing-corner-btn').hover(
-    //     function() {
-    //         $("#card-1 .card-text").toggleClass("expanded");
-    //         $("#card-1 .card-text h3").toggleClass("active");
-    //     }
-    // );
-
-    // $('#card-4 a.missing-corner-btn').hover(
-    //     function() {
-    //         $("#card-4 .card-text").toggleClass("expanded");
-    //         $("#card-4 .card-text h3").toggleClass("active");
-    //     }
-    // );
-
-	// setTimeout(function(){
-	// 	$("#card-1").addClass("anim-in")
-	// 	//console.log("test");
-	// }, 300);
-    // setTimeout(function(){
-    //     $("#card-2").addClass("anim-in")
-    //     //console.log("test");
-    // }, 400);
-    // setTimeout(function(){
-    //     $("#card-3").addClass("anim-in")
-    //     //console.log("test");
-    // }, 500);
-    // setTimeout(function(){
-    //     $("#card-4").addClass("anim-in")
-    //     //console.log("test");
-    // }, 300);
-
-    // $('.chat-title-bar button').click(function() {
-
-    //     $('#chat-module--container').toggleClass('closed');
-    //     $('#chat-text-input').focus();
-    // });
 
     function formatDate12Hour(date) {
         let hours = date.getHours();
@@ -69,8 +72,6 @@ $(window).on("load", function() {
         let strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
     }
-
-
     
 
     $(document).keypress(function(e) {
@@ -86,88 +87,6 @@ $(window).on("load", function() {
 		} 
 		
 	});
-
-    var workLink = $(".menu-work-link");
-    var aboutLink = $(".menu-work-link");
-    var contactLink = $(".menu-work-link");
-    var workTitle = $(".section-title-work");
-
-	// $(".app--container").scroll(function() {
-    //     console.log($(".app--container").scrollTop());
-    // })
-
-    workLink.click(function() {
-
-        // $(".app--container").animate({
-        //     scrollTop: $(".section-title-work").offset().top
-        // }, 300);
-        $('.menu-btn').toggleClass("expanded");
-
-    });
-
-    aboutLink.click(function() {
-        console.log("clicked");
-        $('.menu-btn').toggleClass("expanded");
-    });
-    contactLink.click(function() {
-        console.log("clicked");
-        $('.menu-btn').toggleClass("expanded");
-    });
-
-
-    var menuClosed = true;
-	var menuBtn = $('.menu-btn.shown');
-	var menuBars = $('.menu-btn.shown .bars');
-	// var closeBtn = $('.menu-btn.expanded .bars');
-
-	menuBars.click(function() {
-        $('.menu-btn').toggleClass("expanded");
-    });
-
-    // menubars.click(function() {
-    //     if(!menuClosed) {
-    //         $('.menu-btn').toggleClass("expanded");
-    //         menuClosed = !menuClosed;
-    //         console.log("closed: "+menuClosed);
-    //     } 
-    // });
-
-    // menuBtnOpen.click(function() {
-    //     if(!menuClosed) {
-    //         $('.menu-btn.shown.expanded').removeClass("expanded");
-    //         menuClosed = true;
-    //     } 
-    // });
-
-    // menuBtnOpen.click(function() {
-    //     if(menuClosed) {
-    //         $('.menu-btn').addClass("expanded");
-    //         menuClosed = false;
-    //     } else {
-    //         $('.menu-btn').removeClass("expanded");
-    //         menuClosed = true;
-    //     }
-    // });
-
-    
-
-    $(".menu--container ul li").mouseenter(function() {
-        var currentItem = $(this);
-        currentItem.closest("a::after").css({backgroundColor: "#ffe"});
-    });
-
-    // $(".menu-container ul li").mouseleave(function(this) {
-    //     $(this).find("a:after").addClass("menu-enter");
-    // });
-
-    
-
-    
-
-    // closeBtn.click(function() {
-    //     menuBtn.removeClass("expanded");
-    // });
-
     // Anims specific to the home page
     TweenMax.staggerFromTo([".intro-text-line","#work-title",".project-card"], .9, {opacity:0, y:50}, {opacity:1, y:0, ease: Power3.easeInOut}, 0.05);
     
@@ -179,25 +98,6 @@ $(window).on("load", function() {
     TweenMax.staggerFromTo([".project-start--container",".portfolio-item-title",".portfolio-item-info-list","p.portfolio-item",".portfolio-item-nav"], 0.9, {opacity:0, y:50}, {opacity:1, y:0, ease: Power3.easeInOut}, 0.05);
     //TweenMax.staggerFromTo(".menu-btn", .7, {opacity:0, y:-50}, {opacity:1, y:0}, 0.15);
     TweenMax.fromTo([".menu-btn",".left-link-block"], 0.7, {opacity:0}, {opacity:1, ease: Power4.easeInOut});
-
-    // Scroll queued anims
-
-    // var scroll = 0;
-
-    // $(".app--container").scroll(function() {
-    //     scroll = $(".app--container").scrollTop(); 
-    //     console.log("Scroll: "+scroll);
-    // })
-    
-    // Scroll anims for Mockstarket 
-    var page = 'mockstarket';
-
-    if(page == 'mockstarket' && scroll > 0) {
-
-        if(scroll >= 1380) {
-
-        }
-    }
 
 
 });
