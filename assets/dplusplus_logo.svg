@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="28px" viewBox="0 0 58 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Heading" transform="translate(-250.000000, -16.000000)" fill="#FFFFFF">
+            <g id="logo" transform="translate(250.000000, 16.000000)">
+                <path d="M4,4 L4,24 L14,24 L14,28 L3,28 L0,28 L0,2 L0,3.20140145e-15 L14,5.77315973e-15 L14,4 L4,4 Z M52,12 L52,4 L48,4 L48,12 L42,12 L42,16 L48,16 L48,24 L52,24 L52,16 L58,16 L58,12 L52,12 Z M32,12 L32,4 L28,4 L28,12 L22,12 L22,16 L28,16 L28,24 L32,24 L32,16 L38,16 L38,12 L32,12 Z M14,2 L18,2 L18,26 L14,26 L14,2 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

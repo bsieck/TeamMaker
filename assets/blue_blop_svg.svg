@@ -1,0 +1,25 @@
+
+<svg width="1404px" height="1567px" viewBox="0 0 1404 1567" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M1584.88716,1236.22911 C1595.18026,1230.62582 1313.76087,192.114038 1304.32731,189.165514 C1052.3938,110.421957 504.692945,188.135314 252.011983,550.581915 C38.1285427,857.377193 228.880646,1181.71363 414.109658,1373.41532 C857.904941,1832.71865 1404.40782,1334.47722 1584.88716,1236.22911 Z" id="path-1"></path>
+        <filter x="-12.1%" y="-12.0%" width="124.2%" height="124.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="52" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.454901961   0 0 0 0 0.725490196   0 0 0 0 1  0 0 0 0.816859149 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HOME-" transform="translate(-36.000000, -1493.000000)">
+            <g id="Group-7" transform="translate(-24.000000, 1433.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask" opacity="0.85" transform="translate(871.342283, 863.096971) scale(1, -1) rotate(-345.000000) translate(-871.342283, -863.096971) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                    <use fill="#74B9FF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
