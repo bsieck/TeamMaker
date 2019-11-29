@@ -73,6 +73,7 @@ body {
     height: auto;
     border-radius: 10px;
     overflow: hidden;
+    transition: all 0.43s cubic-bezier(0.86, 0, 0.07, 1) 0.13s;
 }
 
 .page-title {

@@ -81,10 +81,19 @@
                 </div>
             </div>
             
-            <button id="make-team-btn" v-on:click="makeTeams()">Make Teams</button>
            
         </div>
 
+        <div id="teamList">
+                <button id="make-team-btn" v-on:click="makeTeams()">Make Teams</button>
+                <div v-for="team in teams">
+                    <div v-for="player in team">
+                        <p>{{ player.name }}</p>
+                    </div>
+                </div>
+
+                </div>
+            </div>
     </body>
     
 </html>
