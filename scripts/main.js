@@ -10,7 +10,10 @@ $(window).on("load", function() {
         el: "#teamList",
         data: {
             numTeams: 2,
-            teams: [[],[]]
+            teams: {
+                "1":[],
+                "2":[]
+            }
         },
         methods: {
             "updateNumTeams": function() {
@@ -21,7 +24,9 @@ $(window).on("load", function() {
                 // verify player list
                 app.players = app.players.filter(d => d.name !== "" & d.name !== "Enter a name...")
 
-                teams.teams = [[],[]]
+                for (var i=1; i<=teams.numTeams; i++) {
+                    teams.teams[i] = []
+                }
 
                 var playersByElo = JSON.parse(JSON.stringify(app.players))
 
@@ -31,64 +36,17 @@ $(window).on("load", function() {
 
                 playersByElo.map(function(d, i) {
                     teamIndex = i % teams.numTeams
-                    teams.teams[teamIndex].push(d)
+                    teams.teams[teamIndex+1].push(d)
                 })
 
                 $(".team-group").addClass("shown");
-
-                console.log(teams.teams)
-
-                // // more complex version
-                // var ranks = [];
-                // var curr_rank = 1;
-                // var curr_elo = -1;
-                // for (var i in playersByElo) {
-                //     if (curr_elo !== playersByElo[i].elo) {
-                //         ranks.push(curr_rank)
-                //         curr_rank += 1
-                //     } else {
-                //         ranks.push(curr_rank)
-                //     }
-                //     curr_elo = playersByElo[i].elo
-                // }
-                // console.log(ranks)
-                // //rank: id
-                // //then grab odd/even ranks
-                // var teamAids = []
-                // ranks.map(function(){})
-                // console.log(playersByElo)
-                // var rankedPlayers = {};
-                // playersByElo.map(function(d, i){
-                //     var rank = i
-                //     var curr_elo = d.elo
-                //     var num_equal_players = playersByElo.filter(d => d.elo === curr_elo)
-                    
-                //     return ;
-                // })
-
             }
         }
     })
     var app = new Vue({
         el: '#playerList',
         data: {
-            players: [
-                // {
-                //     "id": 1,
-                //     "name": "Zach",
-                //     "elo": 10
-                // },
-                // {
-                //     "id": 2,
-                //     "name": "Brennan",
-                //     "elo": 5
-                // },
-                // {
-                //     "id": 3,
-                //     "name": "Jake",
-                //     "elo": 15
-                // }
-            ]
+            players: []
         },
         computed: {
         },
@@ -96,20 +54,18 @@ $(window).on("load", function() {
             "changePlayerName": function(id) {
                 var guy = app.players.filter(d => d.id === id)[0]
                 guy.name = $("#"+id).val()
-                console.log(guy)
-                console.log(app.players)
                 updateIDs()
             },
             "addPlayer": function() {
-
                 var template = {
                     "id": updateIDs(),
-                    "name": "Enter a name...",
+                    "name": "",
                     "elo": 10
                 }
-
                 app.players.push(template);
-                $(".player-list li:last-child .player-name input").focus();
+                setTimeout(function(){
+                    $(".player-list li:last-child .player-name input").focus();
+                },5)
             },
             "deletePlayer": function(id){
                 app.players = app.players.filter(d => d.id !== id)
