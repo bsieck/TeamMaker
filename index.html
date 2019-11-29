@@ -46,54 +46,52 @@
             <div class="loader spinner"></div>
         </div> -->
 
-        <div class="app--container container" id="playerList">
-            <div class="row header">
-                <div class="col-xs-1 menu-btn">
-                    <i class="material-icons">
-                    menu
-                    </i>
-                </div>
-                <div class="col-xs-10 page-title">Players</div>
-                <div class="col-xs-1 edit-btn">
-                    <i class="material-icons">
-                    edit
-                    </i>
-                </div>
+        <div id="playerList" class="app--container container">
+            <div class="col-xs-12 col-lg-6 col-lg-offset-3 col-xs-offset-0">
+                <div class="row header">
+                    <div class="col-xs-1 menu-btn">
+                        <i class="material-icons">
+                        menu
+                        </i>
+                    </div>
+                    <div class="col-xs-2 col-xs-offset-4 page-title">Players</div>
+                    <div class="col-xs-1 col-xs-offset-4 edit-btn">
+                        <i class="material-icons">
+                        edit
+                        </i>
+                    </div>
 
-            </div>
-            <div class="row">
-                <div class="main--container col-xs-12 col-lg-6 col-lg-offset-3 col-xs-offset-0 no-gutter">
-                    <ul class="player-list" v-for="player in players">
-                        <li>
-                            <div class="player-number">{{ player.id }}</div>
-                            <div class="player-name" v-bind:id="'name' + player.id" v-on:click=clearName(player.id)>
-                                <input type="text" placeholder="Enter a name..." v-bind:id="player.id" v-bind:value="player.name" @change="changePlayerName(player.id)">
-                            </div>
-                            <div class="delete-btn" v-on:click="deletePlayer(player.id)">
-                                <i class="material-icons">
-                                close
-                                </i>
-                            </div>
-                        </li>
-                        
-                    </ul>
-                    <button id="add-player-btn" v-on:click="addPlayer()">Add player</button>
                 </div>
-            </div>
-            
-           
-        </div>
-
-        <div id="teamList">
-                <button id="make-team-btn" v-on:click="makeTeams()">Make Teams</button>
-                <div v-for="team in teams">
-                    <div v-for="player in team">
-                        <p>{{ player.name }}</p>
+                <div class="row">
+                    <div class="main--container no-gutter">
+                        <ul class="player-list" v-for="player in players">
+                            <li>
+                                <div class="player-number">{{ player.id }}</div>
+                                <div class="player-name" v-bind:id="'name' + player.id" v-on:click=clearName(player.id)>
+                                    <input type="text" placeholder="Enter a name..." v-bind:id="player.id" v-bind:value="player.name" @change="changePlayerName(player.id)">
+                                </div>
+                                <div class="delete-btn" v-on:click="deletePlayer(player.id)">
+                                    <i class="material-icons">
+                                    close
+                                    </i>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                        <button id="add-player-btn" v-on:click="addPlayer()">Add player</button>
                     </div>
                 </div>
-
+                <div id="teamList" class="row">
+                    <h1>Teams</h1>
+                    <button id="make-team-btn" v-on:click="makeTeams()">Make Teams</button>
+                    <div v-for="team in teams">
+                        <div v-for="player in team">
+                            <p>{{ player.name }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     </body>
     
 </html>
