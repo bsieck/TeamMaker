@@ -1,34 +1,35 @@
 $(window).on("load", function() {
-
+    var updateIDs = function() {
+        app.players = app.players.map(function(d, i){
+            d.id = i + 1;
+            return d;
+        })
+        return app.numPlayers() + 1;
+    }
     var app = new Vue({
         el: '#playerList',
         data: {
             players: [
                 {
                     "id": 1,
-                    "name": "Jakob",
-                    "elo": 10
-                },
-                {
-                    "id": 2,
                     "name": "Zach",
                     "elo": 10
                 },
                 {
-                    "id": 3,
+                    "id": 1,
                     "name": "Brennan",
-                    "elo": 10
+                    "elo": 5
+                },
+                {
+                    "id": 1,
+                    "name": "Jake",
+                    "elo": 15
                 }
             ]
         },
         computed: {
-            "numPlayers": function() {
-                if (app === undefined){
-                    return 0;
-                } else {
-                    var len = app.players.length
-                    return len;
-                }
+            "rankedPlayers": function() {
+
             }
         },
         methods: {
@@ -37,23 +38,72 @@ $(window).on("load", function() {
                 guy.name = $("#"+id).val()
                 console.log(guy)
                 console.log(app.players)
+                updateIDs()
             },
             "addPlayer": function() {
 
                 var template = {
-                    "id": 4,
+                    "id": updateIDs(),
                     "name": "Enter a name...",
-                    "elo": 0
+                    "elo": 10
                 }
 
                 app.players.push(template);
+            },
+            "deletePlayer": function(id){
+                app.players = app.players.filter(d => d.id !== id)
+                updateIDs()
+            },
+            "numPlayers": function() {
+                if (app !== undefined){
+                    var len = app.players.length
+                    console.log(len)
+                    return len;
+                }
+            },
+            "clearName": function(id) {
+                console.log(id)
+                app.players.filter(d => d.id === id)[0].name=""
+                console.log("id")
+            },
+            "makeTeams": function() {
+                console.log(app.players)
+                var playersByElo = app.players.sort(function(a, b) {
+                    return a.elo - b.elo;
+                });
+                var ranks = [];
+                var curr_rank = 1;
+                var curr_elo = -1;
+                for (var i in playersByElo) {
+                    if (curr_elo !== playersByElo[i].elo) {
+                        ranks.push(curr_rank)
+                        curr_rank += 1
+                    } else {
+                        ranks.push(curr_rank)
+                    }
+                    curr_elo = playersByElo[i].elo
+                }
+                console.log(ranks)
+                //rank: id
+                //then grab odd/even ranks
+                var teamAids = []
+                ranks.map(function)
+                console.log(playersByElo)
+                var rankedPlayers = {};
+                playersByElo.map(function(d, i){
+                    var rank = i
+                    var curr_elo = d.elo
+                    var num_equal_players = playersByElo.filter(d => d.elo === curr_elo)
+                    
+                    return ;
+                })
 
-                console.log("player added")
             }
+
         }
 
     })
-
+    updateIDs();
 
     setInterval(function(){ 
         $('.pre-loader').addClass('exit');

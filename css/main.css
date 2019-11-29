@@ -132,6 +132,7 @@ body {
     text-align: center;
     padding-top: 4px;
     transform: translateY(-4px);
+    cursor: pointer;
 }
 .delete-btn i {
     font-size: 20px !important;
