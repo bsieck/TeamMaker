@@ -53,7 +53,12 @@ $(window).on("load", function() {
         methods: {
             "changePlayerName": function(id) {
                 var guy = app.players.filter(d => d.id === id)[0]
-                guy.name = $("#"+id).val()
+                guy.name = $("#"+id+" .player-name input").val()
+                updateIDs()
+            },
+            "changePlayerElo": function(id) {
+                var guy = app.players.filter(d => d.id === id)[0]
+                guy.elo = $("#"+id+" .player-elo input").val()
                 updateIDs()
             },
             "addPlayer": function() {

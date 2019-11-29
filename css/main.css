@@ -146,6 +146,19 @@ body {
     border: none;
     background-color: transparent;
 }
+.player-elo {
+    position: absolute;
+    left: 200px;
+    font-size: 14px;
+    color: #8E8E8E;
+    width: 65%;
+    text-align: left;
+}
+
+.player-elo input {
+    border: none;
+    background-color: transparent;
+}
 
 .delete-btn {
     position: absolute;
@@ -231,7 +244,6 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: all 0.43s cubic-bezier(0.86, 0, 0.07, 1) 0.13s;
-
 }
 
 .team-group.shown {

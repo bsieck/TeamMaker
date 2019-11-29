@@ -67,8 +67,13 @@
                         <ul class="player-list">
                             <li class="animated fade-in" v-for="player in players">
                                 <div class="player-number">{{ player.id }}</div>
-                                <div class="player-name" v-bind:id="'name' + player.id" v-on:click=clearName(player.id)>
-                                    <input type="text" placeholder="Enter a name..." v-bind:id="player.id" v-bind:value="player.name" @change="changePlayerName(player.id)">
+                                <div v-bind:id="player.id">
+                                    <div class="player-name" v-on:click=clearName(player.id)>
+                                        <input type="text" placeholder="Enter a name..." v-bind:value="player.name" @change="changePlayerName(player.id)">
+                                    </div>
+                                    <div class="player-elo" v-bind:id="'elo' + player.id">
+                                        <input type="text" placeholder="Enter a rating..." v-bind:value="player.elo" @change="changePlayerElo(player.id)">
+                                    </div>
                                 </div>
                                 <div class="delete-btn no-select" v-on:click="deletePlayer(player.id)">
                                     <i class="material-icons">
