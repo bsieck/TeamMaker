@@ -17,18 +17,27 @@ $(window).on("load", function() {
                 teams.numTeams = 2;
             },
             "makeTeams": function() {
+
                 // verify player list
                 app.players = app.players.filter(d => d.name !== "" & d.name !== "Enter a name...")
+
                 teams.teams = [[],[]]
+
                 var playersByElo = JSON.parse(JSON.stringify(app.players))
+
                 playersByElo.sort(function(a, b) {
                     return b.elo - a.elo;
                 });
+
                 playersByElo.map(function(d, i) {
                     teamIndex = i % teams.numTeams
                     teams.teams[teamIndex].push(d)
                 })
+
+                $(".team-group").addClass("shown");
+
                 console.log(teams.teams)
+
                 // // more complex version
                 // var ranks = [];
                 // var curr_rank = 1;
@@ -64,27 +73,24 @@ $(window).on("load", function() {
         el: '#playerList',
         data: {
             players: [
-                {
-                    "id": 1,
-                    "name": "Zach",
-                    "elo": 10
-                },
-                {
-                    "id": 1,
-                    "name": "Brennan",
-                    "elo": 5
-                },
-                {
-                    "id": 1,
-                    "name": "Jake",
-                    "elo": 15
-                }
+                // {
+                //     "id": 1,
+                //     "name": "Zach",
+                //     "elo": 10
+                // },
+                // {
+                //     "id": 2,
+                //     "name": "Brennan",
+                //     "elo": 5
+                // },
+                // {
+                //     "id": 3,
+                //     "name": "Jake",
+                //     "elo": 15
+                // }
             ]
         },
         computed: {
-            "rankedPlayers": function() {
-
-            }
         },
         methods: {
             "changePlayerName": function(id) {
@@ -103,6 +109,7 @@ $(window).on("load", function() {
                 }
 
                 app.players.push(template);
+                $(".player-list li:last-child .player-name input").focus();
             },
             "deletePlayer": function(id){
                 app.players = app.players.filter(d => d.id !== id)

@@ -46,7 +46,7 @@
             <div class="loader spinner"></div>
         </div> -->
 
-        <div id="playerList" class="app--container container">
+        <div class="app--container container">
             <div class="col-xs-12 col-lg-6 col-lg-offset-3 col-xs-offset-0">
                 <div class="row header">
                     <div class="col-xs-1 menu-btn">
@@ -62,21 +62,20 @@
                     </div>
 
                 </div>
-                <div class="row">
+                <div  id="playerList" class="row">
                     <div class="main--container no-gutter">
-                        <ul class="player-list" v-for="player in players">
-                            <li>
+                        <ul class="player-list">
+                            <li class="animated fade-in" v-for="player in players">
                                 <div class="player-number">{{ player.id }}</div>
                                 <div class="player-name" v-bind:id="'name' + player.id" v-on:click=clearName(player.id)>
                                     <input type="text" placeholder="Enter a name..." v-bind:id="player.id" v-bind:value="player.name" @change="changePlayerName(player.id)">
                                 </div>
-                                <div class="delete-btn" v-on:click="deletePlayer(player.id)">
+                                <div class="delete-btn no-select" v-on:click="deletePlayer(player.id)">
                                     <i class="material-icons">
                                     close
                                     </i>
                                 </div>
                             </li>
-                            
                         </ul>
                         <button id="add-player-btn" v-on:click="addPlayer()">Add player</button>
                     </div>
@@ -84,9 +83,20 @@
                 <div id="teamList" class="row">
                     <h1>Teams</h1>
                     <button id="make-team-btn" v-on:click="makeTeams()">Make Teams</button>
-                    <div v-for="team in teams">
-                        <div v-for="player in team">
-                            <p>{{ player.name }}</p>
+                    <div class="team-list-group" v-for="team in teams">
+                        <div class="team-group">
+                            <div class="team-list-title">TEAM NUMBER</div>
+                            <ul class="team-list">
+                                <li v-for="player in team">
+                                    <div class="player-number">{{ player.id }}</div>
+                                    <div class="player-name" v-bind:id="'name' + player.id">{{ player.name }}</div>
+                                    <div class="delete-btn no-select" v-on:click="deletePlayer(player.id)">
+                                        <i class="material-icons">
+                                        close
+                                        </i>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
